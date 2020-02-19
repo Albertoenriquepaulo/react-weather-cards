@@ -3,22 +3,61 @@
 //User: React-ap-2020
 
 import React from 'react';
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './App.css';
 import WeatherEngine from "./component/WeatherEngine";
 import NavBar from "./component/NavBar/navbar";
 
+//Pages to Route
+import SignUp from "./component/pages/signup";
+import Login from "./component/pages/login";
+import Admin from "./component/pages/admin";
+import Home from "./component/pages/home";
+import UserDesktop from "./component/pages/user-desktop";
 
-function App() {
+import MyRouter from "./component/router";
+
+const App = () => {
+  const [numbersCardToPrint, setNumbersCardToPrint] = useState(0);
+
+  const doWhenOnkeyDownEqualEnter = (params) => {
+    if (params.keyCode === 13) {
+      setNumbersCardToPrint(params.target.value);
+    }
+  }
+
+  const createHTML = (value) => {
+    let weatherInnerHTML = [];
+    for (let index = 0; index < value; index++) {
+      weatherInnerHTML.push(<WeatherEngine initialLocation="Venezuela" />)
+    }
+    return weatherInnerHTML;
+  }
+
+  // function App() {
+
   return (
-    <div className="App">
-      <NavBar />
-      <div className="WeatherEngine">
-        <WeatherEngine initialLocation="Venezuela" />
-        <WeatherEngine initialLocation="Spain" />
-        <WeatherEngine initialLocation="Ireland" />
+    <Router>
+      <div className="App">
+        <NavBar />
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/user-desktop" component={UserDesktop} />
+          </Switch>
+
+        </div>
+        <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" onKeyDown={doWhenOnkeyDownEqualEnter}></input>
+        <div className="WeatherEngine">
+          {createHTML(numbersCardToPrint)}
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 

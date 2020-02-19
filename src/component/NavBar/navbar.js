@@ -1,22 +1,24 @@
 import React from 'react';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import Logo from './img/weatherNavBar.png'
+import { Link } from "react-router-dom";
+
 
 const NavBar = () => {
 
-    const NavigatorBar = styled.nav`
-        background-image: linear-gradient(to right, blue, red);
+    // const NavigatorBar = styled.nav`
+    //     background-image: linear-gradient(to right, blue, red);
 
-    `
+    // `
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary static-top">
-            <div class="container">
-                <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+            <div className="container">
+                <div className="navbar-brand">
                     <img src={Logo} alt="" width="150px" />
-                </a>
+                </div>
                 <button
-                    class="navbar-toggler"
+                    className="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarResponsive"
@@ -24,26 +26,28 @@ const NavBar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span class="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"
+                <div className="collapse navbar-collapse" id="navbarResponsive">
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-item active">
+                            <Link to="/" className="nav-link"
                             >Home
-                <span class="sr-only">(current)</span>
-                            </a>
+                    {/* <span className="sr-only"></span> */}
+                            </Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sign Up</a>
+                        <li className="nav-item">
+                            <Link to="/signup" className="nav-link">Sign Up</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Log In</a>
+                        <li className="nav-item">
+                            <Link to="/login" className="nav-link">Log In</Link>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin</a>
+                        <li className="nav-item">
+                            <Link to="/admin" className="nav-link">Admin</Link>
                         </li>
                     </ul>
+                    <div>
+                    </div>
                 </div>
             </div>
         </nav>

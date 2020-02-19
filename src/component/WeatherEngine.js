@@ -49,10 +49,10 @@ const WeatherEngine = ({ initialLocation }) => {
     }
 
     //Funcion para manejar las queries de busqueda from the user side
-    const handleSearch = (params) => {
-        params.preventDefault();
-        dataFromAPI_GetWeather(query);
-    }
+    // const handleSearch = (params) => {
+    //     params.preventDefault();
+    //     dataFromAPI_GetWeather(query);
+    // }
 
     const changeQuery = (query) => {
         setQuery(query);
