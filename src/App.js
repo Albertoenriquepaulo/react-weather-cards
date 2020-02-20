@@ -18,6 +18,8 @@ import Home from "./component/pages/home";
 import UserConfig from "../src/component/pages/user-config";
 import UserDesktop from "../src/component/pages/user-desktop";
 
+import UsuarioConfig from "../src/component/countryList/user-config";
+
 // import MyRouter from "./component/router";
 
 const App = () => {
@@ -51,6 +53,7 @@ const App = () => {
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/user-desktop" component={UserDesktop} />
             <Route path="/user-config:userName" component={UserConfig} />
+            <Route path="/usuario-config" component={UsuarioConfig} />
           </Switch>
 
         </div>
