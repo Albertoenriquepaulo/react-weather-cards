@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { Route, Redirect, useHistory } from 'react-router-dom';
 
+import User from "../../User" //Mi clase usuario con todos los datos de un usuario
 
 const SignUp = () => {
 
@@ -17,14 +18,15 @@ const SignUp = () => {
                 return false;
             }
         });
-
     }
 
     const saveToLS = (params) => {
 
         const name = document.getElementById("name-ls").value;
         const pass = document.getElementById("pass-ls").value;
-        const nameAndPass = { name: name, pass: pass };
+        // const nameAndPass = { name: name, pass: pass, arryCountries: ["Venezuela", "España"] };
+
+        const nameAndPass = new User(name, pass, []); //{ name: name, pass: pass, arryCountries: ["Venezuela", "España"] };
 
         if (localStorage.getItem('myValueInLocalStorage') !== null) {
             arryToLS = JSON.parse(localStorage.getItem('myValueInLocalStorage'));
@@ -36,7 +38,7 @@ const SignUp = () => {
             // TODO: Usuario ha sido creado con éxito
             arryToLS.push(nameAndPass);
             localStorage.setItem("myValueInLocalStorage", JSON.stringify(arryToLS));
-            history.push('/login');
+            history.push(`/user-config:${nameAndPass.name}`);
         }
     }
 

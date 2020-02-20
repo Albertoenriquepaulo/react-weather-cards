@@ -15,9 +15,10 @@ import SignUp from "./component/pages/signup";
 import Login from "./component/pages/login";
 import Admin from "./component/pages/admin";
 import Home from "./component/pages/home";
-import UserDesktop from "./component/pages/user-desktop";
+import UserConfig from "../src/component/pages/user-config";
+import UserDesktop from "../src/component/pages/user-desktop";
 
-import MyRouter from "./component/router";
+// import MyRouter from "./component/router";
 
 const App = () => {
   const [numbersCardToPrint, setNumbersCardToPrint] = useState(0);
@@ -49,6 +50,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
             <Route exact path="/user-desktop" component={UserDesktop} />
+            <Route path="/user-config:userName" component={UserConfig} />
           </Switch>
 
         </div>
