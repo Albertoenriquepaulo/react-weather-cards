@@ -1,42 +1,36 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Hp from "../../component/helpers";
 import User from "../../User"
 
+const handleSubmit = (e, user, setUser, input, setInput) => {
+    e.preventDefault();
+    // const id = (user.countries.length) ? notes[notes.length - 1].id + 1 : 0;
+    console.log("user", user, "input", input);
+    let userAux = user;
+
+    userAux.countries.push(input);
+    setUser(userAux);
+    // setNotes([...notes, { id: id, message: input }]);
+    console.log("handleSubmit->user", user);
+    setInput("");
+}
 
 const UserConfig = (props) => {
-    console.log("UserConfig");
-    console.log("From User-Config ->", JSON.parse(localStorage.getItem('myValueInLocalStorage')));
-    // console.log(match);
+    // console.log("UserConfig");
+    // console.log("From User-Config ->", JSON.parse(localStorage.getItem('myValueInLocalStorage')));
+    const [input, setInput] = useState("")
     const userName = Hp.getUserName(props.match);//match.params.userName.substr(1, match.params.userName.length);
-    // console.log(userName);
     let userObject = Hp.fillUserFromLSData(userName);
-    console.log("From user-config", userObject);
-    //Variables
-    //const countryList = document.querySelector('#lista-countrys');
-    // const countryList = useRef(null);
-    //let countryList = QSelector('#lista-countries');
-    let countryList;
-    const { isLoading, data } = props;
-    useEffect(() => {
-        if (data) {
-            countryList = document.getElementById('name').value;
-        }
-    }, [data]) // this diff is necessary
+    const [user, setUser] = useState(userObject);
+    userObject.countries.push("Venezuela");
+    userObject.countries.push("Colombia");
 
+    console.log("From user-config-userObject", userObject);
+    console.log("From user-config-user", user);
+    const prueba = user.countries.map(item => console.log(item));
 
-    console.log("COUNTRY_LIST", countryList);
     CreateHTMLToAddCountry("Venezuela");
-
-
-    // function EventListeners() {
-    //     Cuando se envia el formulario
-    //     TODO: QSelector('#formulario').addEventListener('submit', AddCountry);
-    //     Delete countrys
-    //     TODO: countryList.addEventListener('click', DeleteCountryFromHTML);
-    //     Load content from LS
-    //     TODO: document.addEventListener('DOMContentLoaded', LSLoaded)
-    // }
 
     //Funciones
     function QSelector(value) {
@@ -44,18 +38,20 @@ const UserConfig = (props) => {
     }
 
     //Añadir country del formulario
-    function AddCountry(e) {
+    function AddCountry(e, user, setUser) {
         e.preventDefault();
-        //e.stopPropagation();
+        console.log("AddCountry, countryValue", e.target.value);
+        console.log("AddCountry, User", user);
+
         //Leer el valor del text area
-        const countryName = QSelector('#country').value;
-        if (countryName !== '') { //TODO: Verified if the element is in the lista with the API, si está, hacer lo que está dentro del if
-            CreateHTMLToAddCountry(countryName);
-            //Añadir a local storage
-            AddCountryToLS(userName, countryName);
-        } else {
-            QSelector('#country').focus();
-        }
+        // const countryName = QSelector('#country').value;
+        // if (e.target.value !== '') { //TODO: Verified if the element is in the lista with the API, si está, hacer lo que está dentro del if
+        //     CreateHTMLToAddCountry(countryName);
+        //     //Añadir a local storage
+        //     AddCountryToLS(userName, countryName);
+        // } else {
+        //     QSelector('#country').focus();
+        // }
     }
 
     function CreateHTMLToAddCountry(countryName) {
@@ -109,6 +105,17 @@ const UserConfig = (props) => {
         });
     }
 
+    const deleteCountry = (user, setUser, country) => {
+        console.log("deleteCountry->user", user, "deleteCountry->country", country);
+        let userAux = user;
+        let countriesArry = userAux.countries.filter(item => item !== country);
+        userAux.countries = countriesArry;
+        // userAux = userAux.countries.filter(item => item !== country);
+        console.log(userAux);
+        return setUser(userAux);
+
+    }
+
     return (
         <div id="contenido">
             <div class="container">
@@ -116,15 +123,22 @@ const UserConfig = (props) => {
                 <div class="row">
                     <div class="col-6">
                         <label for="country">Escriba el Pais: </label>
-                        <form action="#" id="formulario" onSubmit={AddCountry}>
+                        <form action="#" id="formulario" onSubmit={(e) => Hp.handleSubmit(e, user, setUser, input, setInput)}>
                             <label for="country"></label>
-                            <textarea id="country" class="w-100"></textarea>
-                            <input type="submit" class="btn btn-primary w-100" value="Agregar" />
+                            <input onChange={(e) => setInput(e.target.value)} value={input} />
+                            <button class="btn btn-primary w-100">Submit</button>
+                            {/* <input type="submit" class="btn btn-primary w-100" value={"Agregar"} onClick={(e) => AddCountry(e, user, setUser)} /> */}
                         </form>
                     </div>
                     <div class="col-6">
                         <h2>Mis Paises</h2>
-                        <ul id="lista-countries" ref={countryList} class="list-group list-group-flush" onClick={DeleteCountryFromHTML}></ul>
+                        <ul id="lista-countries" class="list-group list-group-flush">
+                            {user.countries.map(item => {
+                                return <li className="list-group-item" key={item}>{item}
+                                    <button key={item} class="borrar-country text-danger" onClick={(e) => deleteCountry(user, setUser, item)} >X</button>
+                                </li>
+                            })}
+                        </ul>
                     </div>
                 </div>
             </div>

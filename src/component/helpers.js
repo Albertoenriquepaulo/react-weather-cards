@@ -11,6 +11,7 @@
 
 // export default checkIfNameExistInArray;
 import User from "../User"
+import React, { useEffect, useState } from 'react';
 
 export default {
 
@@ -43,6 +44,41 @@ export default {
                 // console.log("fillUserFromLSData", element);
             }
         });
+        // setCountriesArry(userToFill);
         return userToFill;
-    }
+    },
+
+    handleSubmit: (e, user, setUser, input, setInput) => {  //To Add Country from HTML
+        e.preventDefault();
+        let userAux = user;
+        userAux.countries.push(input);
+        setUser(userAux);
+        // setNotes([...notes, { id: id, message: input }]);
+        console.log("handleSubmit->user", user);
+        setInput("");
+    },
+
+    deleteCountry: (user, setUser, country) => {
+        console.log("deleteCountry->user", user, "deleteCountry->country", country);
+        let userAux = user;
+        let countriesArry = userAux.countries.filter(item => item !== country);
+        userAux.countries = countriesArry;
+        // userAux = userAux.countries.filter(item => item !== country);
+        console.log(userAux);
+        setUser(userAux);
+        console.log(user);
+    },
+
+    // deleteCountry1: (user, setUser, country) => {
+    //     console.log("deleteCountry->user", user, "deleteCountry->country", country);
+    //     let userAux = user;
+    //     let countriesArry = userAux.countries.filter(item => item !== country);
+    //     userAux.countries = countriesArry;
+    //     useEffect(() => {
+    //         setUser(userAux);
+    //     }, []);
+    //     // userAux = userAux.countries.filter(item => item !== country);
+    //     return userAux;
+    // }
+
 }
