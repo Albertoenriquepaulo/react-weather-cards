@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState, useCallback } from 'react';
+// import update from 'react-addons-update';
 import Hp from "../../component/helpers";
 import User from "../../User"
 
@@ -26,9 +26,12 @@ const UserConfig = (props) => {
     userObject.countries.push("Venezuela");
     userObject.countries.push("Colombia");
 
+
+    const [forceRerender, setForceRerender] = useState(true);
+
     console.log("From user-config-userObject", userObject);
     console.log("From user-config-user", user);
-    const prueba = user.countries.map(item => console.log(item));
+    //const prueba = user.countries.map(item => console.log(item));
 
     CreateHTMLToAddCountry("Venezuela");
 
@@ -105,15 +108,15 @@ const UserConfig = (props) => {
         });
     }
 
-    const deleteCountry = (user, setUser, country) => {
+    const deleteCountry = (e, country, setForceRerender) => {
+        e.preventDefault();
         console.log("deleteCountry->user", user, "deleteCountry->country", country);
         let userAux = user;
         let countriesArry = userAux.countries.filter(item => item !== country);
         userAux.countries = countriesArry;
-        // userAux = userAux.countries.filter(item => item !== country);
         console.log(userAux);
-        return setUser(userAux);
-
+        setUser(userAux);
+        setForceRerender(!forceRerender);
     }
 
     return (
@@ -130,12 +133,15 @@ const UserConfig = (props) => {
                             {/* <input type="submit" class="btn btn-primary w-100" value={"Agregar"} onClick={(e) => AddCountry(e, user, setUser)} /> */}
                         </form>
                     </div>
+                    {
+                        console.log(user)
+                    }
                     <div class="col-6">
                         <h2>Mis Paises</h2>
                         <ul id="lista-countries" class="list-group list-group-flush">
                             {user.countries.map(item => {
                                 return <li className="list-group-item" key={item}>{item}
-                                    <button key={item} class="borrar-country text-danger" onClick={(e) => deleteCountry(user, setUser, item)} >X</button>
+                                    <button key={item} class="borrar-country text-danger" onClick={(e) => Hp.deleteCountry(e, user, setUser, item, setForceRerender, forceRerender)} >X</button>
                                 </li>
                             })}
                         </ul>

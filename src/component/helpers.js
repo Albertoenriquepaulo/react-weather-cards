@@ -58,15 +58,15 @@ export default {
         setInput("");
     },
 
-    deleteCountry: (user, setUser, country) => {
+    deleteCountry: (e, user, setUser, country, setForceRerender, forceRerender) => {
+        e.preventDefault();
         console.log("deleteCountry->user", user, "deleteCountry->country", country);
         let userAux = user;
         let countriesArry = userAux.countries.filter(item => item !== country);
         userAux.countries = countriesArry;
-        // userAux = userAux.countries.filter(item => item !== country);
         console.log(userAux);
         setUser(userAux);
-        console.log(user);
+        setForceRerender(!forceRerender);
     },
 
     // deleteCountry1: (user, setUser, country) => {
