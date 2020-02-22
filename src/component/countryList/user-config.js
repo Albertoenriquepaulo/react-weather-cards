@@ -16,9 +16,7 @@ const deleteNotes = (id, notes, setNotes) => {
 }
 
 export default () => {
-    const [notes, setNotes] = useState([
-
-    ]);
+    const [notes, setNotes] = useState([]);
 
     const [input, setInput] = useState("")
 
