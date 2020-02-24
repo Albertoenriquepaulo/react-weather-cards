@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import WeatherEngine from "./component/WeatherEngine";
 import NavBar from "./component/NavBar/navbar";
+import FooterBootStrap from "./component/footer";
 import { Button } from 'reactstrap';
 
 //Pages to Route
@@ -57,7 +58,11 @@ const App = () => {
             <Route path="/usuario-config" component={UsuarioConfig} />
           </Switch>
         </div>
+        <div className="myClass">
+          <FooterBootStrap />
+        </div >
       </div>
+
     </Router>
   );
 }

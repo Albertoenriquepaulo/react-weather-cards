@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+
 const Location = ({ city, country, changeQuery }) => {
 
     const Container = styled.div`
@@ -19,7 +20,7 @@ const Location = ({ city, country, changeQuery }) => {
     //https://blog.logrocket.com/5-things-you-can-do-in-css-in-js-that-you-didnt-know-about-c422fb67ceb6/
     const TextBox = styled.input`
         font-family: Merriweather, sans-serif;
-        font-size: 1.2em;
+        font-size: 0.8em;
         border: 0;
         cursor: pointer;
         background-color:transparent;
@@ -28,7 +29,6 @@ const Location = ({ city, country, changeQuery }) => {
         color:white;
         width:100%;
         `
-
     const onkeyDownAndBlur = (params) => {
         if (params.keyCode === 13) {
             params.preventDefault();
@@ -36,7 +36,6 @@ const Location = ({ city, country, changeQuery }) => {
             console.log("From onkeyDownAndBlur:", params.target.value);
         }
     }
-
 
     return (
         <Container>

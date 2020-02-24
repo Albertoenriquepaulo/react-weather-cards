@@ -1,6 +1,7 @@
 //http://localhost:3000/user-config:Manu
 import React, { useState } from 'react';
 
+
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { FaTrashAlt } from 'react-icons/fa';
 import { WiDayHail } from "react-icons/wi";
@@ -22,8 +23,12 @@ const UserConfig = (props) => {
     return (
         <div id="contenido">
             <div className="container">
-                <h1>Mis Tarjetas de Clima</h1>
-                <p>Bienvenido: <strong>{user.name}</strong></p>
+                <div className="row">
+                    <h1>Mis Tarjetas de Clima</h1>
+                </div>
+                <div className="row">
+                    <p>Bienvenido: <strong>{user.name}</strong></p>
+                </div>
                 <div className="row">
                     <div className="col-6">
                         <label for="country">Escriba el Pais: </label>
@@ -34,12 +39,28 @@ const UserConfig = (props) => {
                         </form>
                     </div>
                     <div className="col-6">
-                        <h2>Mis Paises</h2>
+                        <div className="row">
+                            <h2>Mis Paises</h2>
+                        </div>
                         <ListGroup className="row">
                             {user.countries.map(item => {
-                                return <ListGroupItem key={item} className="col-7"><WiDayHail />{item}
-                                    <a href="#" ><FaTrashAlt key={item} className="col-9" onClick={(e) => Hp.deleteCountry(e, user, setUser, item, setForceRerender, forceRerender)} /></a>
-                                </ListGroupItem>
+                                return (
+                                    <ListGroupItem key={item} >
+                                        <div className="row">
+                                            <div className="col-7" >
+                                                <div className="cloud d-inline" >
+                                                    <WiDayHail />
+
+                                                </div>{item}
+                                            </div>
+                                            <div className="col-1 offset-4">
+                                                <a href="#" >
+                                                    <FaTrashAlt className="btn-add" key={item} onClick={(e) => Hp.deleteCountry(e, user, setUser, item, setForceRerender, forceRerender)} />
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </ListGroupItem>
+                                )
                             })}
                         </ListGroup>
                     </div>

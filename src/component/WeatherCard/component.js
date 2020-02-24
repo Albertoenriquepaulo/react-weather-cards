@@ -25,7 +25,7 @@ const WeatherCard = ({ temp, condition, city, country, changeQuery }) => {
 
 
     const Card = styled.div`
-        margin: 0 auto;
+        margin: 20px auto;
         background: ${bg};
         width: 200px;
         height: 240px;
