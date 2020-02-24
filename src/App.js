@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import WeatherEngine from "./component/WeatherEngine";
 import NavBar from "./component/NavBar/navbar";
+import { Button } from 'reactstrap';
 
 //Pages to Route
 import SignUp from "./component/pages/signup";
@@ -51,15 +52,10 @@ const App = () => {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/admin" component={Admin} />
-            <Route exact path="/user-desktop" component={UserDesktop} />
+            <Route exact path="/user-desktop:userName" component={UserDesktop} />
             <Route path="/user-config:userName" component={UserConfig} />
             <Route path="/usuario-config" component={UsuarioConfig} />
           </Switch>
-
-        </div>
-        <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" onKeyDown={doWhenOnkeyDownEqualEnter}></input>
-        <div className="WeatherEngine">
-          {createHTML(numbersCardToPrint)}
         </div>
       </div>
     </Router>

@@ -33,7 +33,6 @@ const NavBar = () => {
                         <li className="nav-item active">
                             <Link to="/" className="nav-link"
                             >Home
-                    {/* <span className="sr-only"></span> */}
                             </Link>
                         </li>
                         <li className="nav-item">

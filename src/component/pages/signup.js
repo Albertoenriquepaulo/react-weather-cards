@@ -3,11 +3,18 @@ import { useState } from "react";
 import { Route, Redirect, useHistory } from 'react-router-dom';
 
 import User from "../../User" //Mi clase usuario con todos los datos de un usuario
+import { Alert } from 'reactstrap';
 
 const SignUp = () => {
 
     let history = useHistory();
     let arryToLS = [];
+    const [userAlreadyExist, setUserAlreadyExist] = useState(false);
+
+    setTimeout(() => {
+        setUserAlreadyExist(true);
+    }, 3000);
+
 
     const checkIfNameExistInArray = (name, arry) => {
         return arry.find(element => {
@@ -21,24 +28,34 @@ const SignUp = () => {
     }
 
     const saveToLS = (params) => {
+        const name = document.getElementById("name-ls").value.replace(/\s/g, "");
+        const pass = document.getElementById("pass-ls").value.replace(/\s/g, "");
 
-        const name = document.getElementById("name-ls").value;
-        const pass = document.getElementById("pass-ls").value;
-        // const nameAndPass = { name: name, pass: pass, arryCountries: ["Venezuela", "España"] };
+        console.log(name, pass);
+        if (name !== "" && pass !== "") {
+            const nameAndPass = new User(name, pass, []); //{ name: name, pass: pass, arryCountries: ["Venezuela", "España"] };
 
-        const nameAndPass = new User(name, pass, []); //{ name: name, pass: pass, arryCountries: ["Venezuela", "España"] };
+            if (localStorage.getItem('myValueInLocalStorage') !== null) {
+                arryToLS = JSON.parse(localStorage.getItem('myValueInLocalStorage'));
+            }
+            if (checkIfNameExistInArray(nameAndPass.name, arryToLS)) {
+                console.log("saveToLS: Existe");
+                setUserAlreadyExist(true);
+                // TODO: Mostrar error, el elemento existe, escoja otro nombre de usuario
+            } else {
+                // TODO: Usuario ha sido creado con éxito
+                arryToLS.push(nameAndPass);
+                localStorage.setItem("myValueInLocalStorage", JSON.stringify(arryToLS));
+                setUserAlreadyExist(false);
+                setTimeout(() => {
+                    history.push(`/user-config:${nameAndPass.name}`);
+                }, 4000);
 
-        if (localStorage.getItem('myValueInLocalStorage') !== null) {
-            arryToLS = JSON.parse(localStorage.getItem('myValueInLocalStorage'));
+            }
         }
-        if (checkIfNameExistInArray(nameAndPass.name, arryToLS)) {
-            console.log("Existe");
-            // TODO: Mostrar error, el elemento existe, escoja otro nombre de usuario
-        } else {
-            // TODO: Usuario ha sido creado con éxito
-            arryToLS.push(nameAndPass);
-            localStorage.setItem("myValueInLocalStorage", JSON.stringify(arryToLS));
-            history.push(`/user-config:${nameAndPass.name}`);
+        else {
+            // TODO: Mensaje de que el password o el usuario están vacios
+            console.log("Name or Pass Empty");
         }
     }
 
@@ -68,7 +85,11 @@ const SignUp = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={saveToLS}>Save to Local Storage</button>
+                    <button type="button" className="btn btn-primary" onClick={saveToLS}>Sign Up</button>
+                    {
+                        userAlreadyExist ? (<Alert color="primary" toggle="true">Usuario ya existe...!</Alert>) :
+                            (<Alert color="success" toggle="true">Usuario creado con éxito...!</Alert>)
+                    }
                 </div>
             </div>
         </div>

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import MyRouter from "../router";
+import { Alert } from 'reactstrap';
+
 
 const LogIn = () => {
     let history = useHistory();
-
     let arryFromLS = [];
+
+    const [userAndPassOK, setUserAndPassOK] = useState(false);
+
+    setTimeout(() => {
+        setUserAndPassOK(true);
+    }, 3000);
 
     const checkIfNameExistInArray = (user, arry) => {
         console.log(":1", user);
@@ -19,7 +25,6 @@ const LogIn = () => {
                 return false;
             }
         });
-
     }
 
     const checkUser = (params) => {
@@ -33,10 +38,15 @@ const LogIn = () => {
         }
         if (checkIfNameExistInArray(nameAndPass, arryFromLS)) {
             console.log("Logeado con éxito");
-            history.push('/user-desktop');
+            setTimeout(() => {
+                history.push(`/user-desktop:${nameAndPass.name}`);
+            }, 4000);
+
+            setUserAndPassOK(true);
             // TODO: Mostrar Logeado con exito
         } else {
             console.log("Usuario o password incorrectos");
+            setUserAndPassOK(false);
             // TODO: Error Usuario o password incorrectos
             //history.push('/login');
         }
@@ -53,7 +63,7 @@ const LogIn = () => {
                 <div className="form-content">
                     <div className="row">
                         <div className="col-md-6">
-                            <p>Signing In</p>
+                            <p>Logging In</p>
                             <div className="form-group">
                                 <input id="user-name" type="text" className="form-control" placeholder="Your Name *" />
                             </div>
@@ -70,6 +80,10 @@ const LogIn = () => {
                     </div>
                     <button type="button" className="btn btn-primary" onClick={checkUser}>Log In</button>
                 </div>
+                {
+                    userAndPassOK ? (<Alert color="primary" toggle="true">Logeado con éxito...!</Alert>) :
+                        (<Alert color="danger" toggle="true">Usuario o Password incorrectos...!</Alert>)
+                }
             </div>
         </div>
 

@@ -39,7 +39,7 @@ export default {
         userAux.countries.push(input);
         setUser(userAux);
         setInput("");
-        console.log(userAux.name, input);
+        // console.log(userAux.name, input);
         AddCountryToLS(userAux.name, input);
     },
 
