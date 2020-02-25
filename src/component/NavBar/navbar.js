@@ -40,22 +40,22 @@ const NavBar = () => {
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                             <Link to="/" className="nav-link">
-                                <FaHome size="32px" data-toggle="tooltip" data-placement="bottom" title="Home" />
+                                <FaHome size="32px" data-toggle="tooltip" data-placement="bottom" title="Home" /><p>Home</p>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/signup" className="nav-link">
-                                <GoSignIn size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign Up" />
+                                <GoSignIn size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign Up" /><p>Sign up</p>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/login" className="nav-link">
-                                <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" />
+                                <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" /><p>User</p>
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/admin" className="nav-link">
-                                <FaAdn size="32px" data-toggle="tooltip" data-placement="bottom" title="Admin" />
+                                <FaAdn size="32px" data-toggle="tooltip" data-placement="bottom" title="Admin" /><p>Admin</p>
                             </Link>
                         </li>
                     </ul>

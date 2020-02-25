@@ -7,6 +7,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { WiDayHail } from "react-icons/wi";
 
 import Hp from "../../component/helpers";
+import SpinnerBtn from "../spinnerBtn"
 
 const UserConfig = (props) => {
     const [input, setInput] = useState("")
@@ -16,6 +17,7 @@ const UserConfig = (props) => {
     const [user, setUser] = useState(userObject);
 
     const [forceRerender, setForceRerender] = useState(true);
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
 
     console.log("From user-config-userObject", userObject);
     console.log("From user-config-user", user);
@@ -35,7 +37,17 @@ const UserConfig = (props) => {
                         <form action="#" id="formulario" onSubmit={(e) => Hp.addCountry(e, user, setUser, input, setInput)}>
                             <label for="country"></label>
                             <input onChange={(e) => setInput(e.target.value)} value={input} />
-                            <button className="btn btn-primary w-100">Añadir</button>
+                            {/* <button className="btn btn-primary w-100">Añadir</button> */}
+                            <SpinnerBtn onClick={() => {
+                                setIsButtonLoading(true);
+                                setTimeout(() => {
+                                    setIsButtonLoading(false);
+
+                                }, 1000);
+                            }}
+                                isLoading={isButtonLoading}>
+                                Añadir
+                    </SpinnerBtn>
                         </form>
                     </div>
                     <div className="col-6">

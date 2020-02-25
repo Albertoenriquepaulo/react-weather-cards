@@ -5,22 +5,23 @@ import { Route, Redirect, useHistory } from 'react-router-dom';
 import User from "../../User" //Mi clase usuario con todos los datos de un usuario
 import { Alert } from 'reactstrap';
 
-import Loader from "../Loader";
+import SpinnerBtn from "../spinnerBtn"
 
-function Button({ isLoading, children, ...props }) {
-    return (
-        <button className="button" {...props}>
-            {isLoading ? <Loader /> : children}
-        </button>
-    );
-}
+// function Button({ isLoading, children, ...props }) {
+//     return (
+//         <button className="button btn btn-primary" {...props}>
+//             {isLoading ? <Loader /> : children}
+//         </button>
+//     );
+// }
 
 const SignUp = () => {
 
     let history = useHistory();
     let arryToLS = [];
     const [userAlreadyExist, setUserAlreadyExist] = useState(false);
-    const [errors, setErrors] = useState({ name: null, pass: null })
+    const [errors, setErrors] = useState({ name: null, pass: null });
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
 
     const validateName = (values) => {
         console.log("validateName: values", values);
@@ -79,7 +80,7 @@ const SignUp = () => {
                 setUserAlreadyExist(false);
                 setTimeout(() => {
                     history.push(`/user-config:${nameAndPass.name}`);
-                }, 4000);
+                }, 1000);
 
             }
         }
@@ -123,7 +124,17 @@ const SignUp = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={saveToLS}>Sign Up</button>
+                    <SpinnerBtn onClick={() => {
+                        setIsButtonLoading(true);
+                        setTimeout(() => {
+                            setIsButtonLoading(false);
+                        }, 1000);
+                        saveToLS();
+                    }}
+                        isLoading={userAlreadyExist && isButtonLoading}>
+                        Sign up
+                    </SpinnerBtn>
+                    {/* <button type="button" className="btn btn-primary" onClick={saveToLS}>Sign Up</button> */}
                     {/* {
                         userAlreadyExist ? (<Alert color="primary" toggle="true">Usuario ya existe...!</Alert>) :
                             (<Alert color="success" toggle="true">Usuario creado con éxito...!</Alert>)
