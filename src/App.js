@@ -3,7 +3,7 @@
 //User: React-ap-2020
 
 import React from 'react';
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './App.css';
@@ -11,6 +11,7 @@ import WeatherEngine from "./component/WeatherEngine";
 import NavBar from "./component/NavBar/navbar";
 import FooterBootStrap from "./component/footer";
 import { Button } from 'reactstrap';
+import { UserContext } from "./component/UserContext";
 
 //Pages to Route
 import SignUp from "./component/pages/signup";
@@ -25,6 +26,9 @@ import UsuarioConfig from "../src/component/countryList/user-config";
 // import MyRouter from "./component/router";
 
 const App = () => {
+  const [userName, setUserName] = useState(null);
+  const value = useMemo(() => ({ userName, setUserName }), [userName, setUserName]);
+
   const [numbersCardToPrint, setNumbersCardToPrint] = useState(0);
 
   const doWhenOnkeyDownEqualEnter = (params) => {
@@ -46,16 +50,20 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <UserContext.Provider value={value}>
+          <NavBar />
+        </UserContext.Provider>
         <div>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/admin" component={Admin} />
-            <Route exact path="/user-desktop:userName" component={UserDesktop} />
-            <Route path="/user-config:userName" component={UserConfig} />
-            <Route path="/usuario-config" component={UsuarioConfig} />
+            <UserContext.Provider value={value}>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/admin" component={Admin} />
+              <Route exact path="/user-desktop:userName" component={UserDesktop} />
+              <Route path="/user-config:userName" component={UserConfig} />
+              <Route path="/usuario-config" component={UsuarioConfig} />
+            </UserContext.Provider>
           </Switch>
         </div>
         <div className="myClass">

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from '@emotion/styled';
-import { css } from '@emotion/core'
+
+
+// import styled from '@emotion/styled';
+// import { css } from '@emotion/core'
 
 import { Alert } from 'reactstrap';
-
+import { UserContext } from "../UserContext";
 
 const LogIn = () => {
     let history = useHistory();
@@ -13,6 +15,7 @@ const LogIn = () => {
     const [userAndPassOK, setUserAndPassOK] = useState(false);
     const [checkUserDone, setCheckUserDone] = useState(false);
     const [errors, setErrors] = useState({ name: null, pass: null })
+    const { setUserName } = useContext(UserContext);
 
     // setTimeout(() => {
     //     setUserAndPassOK(true);
@@ -57,7 +60,9 @@ const LogIn = () => {
             arryFromLS = JSON.parse(localStorage.getItem('myValueInLocalStorage'));
         }
         if (checkIfNameExistInArray(nameAndPass, arryFromLS)) {
+
             console.log("Logeado con éxito");
+            setUserName(nameAndPass.name);
             setTimeout(() => {
                 history.push(`/user-desktop:${nameAndPass.name}`);
             }, 4000);

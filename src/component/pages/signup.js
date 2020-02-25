@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Route, Redirect, useHistory } from 'react-router-dom';
 
 import User from "../../User" //Mi clase usuario con todos los datos de un usuario
 import { Alert } from 'reactstrap';
+import { UserContext } from "../UserContext";
 
 import SpinnerBtn from "../spinnerBtn"
 
@@ -22,6 +23,7 @@ const SignUp = () => {
     const [userAlreadyExist, setUserAlreadyExist] = useState(false);
     const [errors, setErrors] = useState({ name: null, pass: null });
     const [isButtonLoading, setIsButtonLoading] = useState(false);
+    const { setUserName } = useContext(UserContext);
 
     const validateName = (values) => {
         console.log("validateName: values", values);
@@ -80,6 +82,7 @@ const SignUp = () => {
                 setUserAlreadyExist(false);
                 setTimeout(() => {
                     history.push(`/user-config:${nameAndPass.name}`);
+                    setUserName(`Enhorabuena ${nameAndPass.name}... Ya eres parte de BBK Weather`)
                 }, 1000);
 
             }

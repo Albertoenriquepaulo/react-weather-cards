@@ -83,3 +83,25 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.user-name {
+  display: flex;
+  justify-content: flex-end;
+  height: 20px;
+  margin: 0 auto;
+}
+
+.user-name > p {
+  padding-left: 10px;
+  padding-right: 40px;
+}
+
+/* .navbar {
+  position: fixed !important;
+  width: 100%;
+  height: 30%;
+} */
+
+.navbar-nav {
+  margin-bottom: -30px;
+}

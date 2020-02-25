@@ -43,7 +43,7 @@ const UserConfig = (props) => {
                                 setTimeout(() => {
                                     setIsButtonLoading(false);
 
-                                }, 1000);
+                                }, 150);
                             }}
                                 isLoading={isButtonLoading}>
                                 Añadir
