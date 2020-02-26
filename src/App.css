@@ -93,22 +93,13 @@ body {
   justify-content: flex-end;
   height: 20px;
   margin: 0 auto;
+  margin-right: 10px;
 }
 
 .user-name > p {
   padding-left: 10px;
   padding-right: 40px;
 }
-
-/* .navbar {
-  position: fixed !important;
-  width: 100%;
-  height: 30%;
-} */
-
-/* .navbar-nav {
-  margin-bottom: -30px;
-} */
 
 .text-swap-config-cards {
   display: flex;
@@ -117,6 +108,13 @@ body {
 
 .nav-link:hover {
   transform: scale(1.25, 1.25);
+}
+
+.mybtn-link {
+  margin-top: 0px !important;
+  padding: 0px !important;
+  color: white !important;
+  margin-bottom: 15px !important;
 }
 
 /* RESPONSIVE */

@@ -1,5 +1,5 @@
 
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FaUserCheck } from "react-icons/fa";
 import { useHistory } from 'react-router-dom';
 
@@ -8,7 +8,6 @@ import { UserContext } from "../component/UserContext";
 const LogOut = () => {
     let history = useHistory();
     const { userName, setUserName } = useContext(UserContext);
-    console.log("LOG-OUT->", userName);
 
     const myFunction = (e) => {
         e.preventDefault();
@@ -20,10 +19,10 @@ const LogOut = () => {
         <>
             <FaUserCheck size="20px" />
             <p><strong>{userName}</strong></p>
-            <a onClick={(e) => {
+            <button type="button" className="btn btn-link mybtn-link" onClick={(e) => {
                 myFunction(e)
             }
-            }>Log out</a>
+            }>Log out</button>
         </>
 
     );

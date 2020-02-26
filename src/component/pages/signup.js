@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useContext } from "react";
-import { Route, Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import User from "../../User" //Mi clase usuario con todos los datos de un usuario
 import { Alert } from 'reactstrap';

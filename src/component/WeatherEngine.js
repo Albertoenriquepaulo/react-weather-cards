@@ -5,9 +5,8 @@ import WeatherCard from "./WeatherCard/component";
 import '../App.css';
 
 const WeatherEngine = ({ initialLocation }) => {
-    //const initialLocation = "Venezuela"
     //init for our state variables
-    const [query, setQuery] = useState(initialLocation);
+    const [setQuery] = useState(initialLocation);
 
     //Añadiendo Loading State, ver HTML abajo también
     const [loading, setLoading] = useState(false);
@@ -21,7 +20,6 @@ const WeatherEngine = ({ initialLocation }) => {
         condition: null,
         country: null
     });
-
 
     //definiendo la data fetching functions
     const dataFromAPI_GetWeather = async query => {

@@ -4,9 +4,6 @@ import Bbk_img from '../../assets/bbkweather.png';
 const Home = () => {
     console.log("Home");
     return (
-        // <div className="container">
-        //     <img src={Bbk_img} alt="" width="80%" />
-        // </div>
         <div className="he-100">
             <div className="container he-100">
                 <div className="row justify-content-center he-100">

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 // import styled from '@emotion/styled';
-import Logo from './img/weatherNavBar.png'
-import { FaUserCheck } from "react-icons/fa";
+
 
 import { Link } from "react-router-dom";
 
@@ -16,24 +15,15 @@ import LogOut from "../logout";
 
 
 const NavBar = () => {
-    const { userName, setUserName } = useContext(UserContext)
-
-    // const NavigatorBar = styled.nav`
-    //     background-image: linear-gradient(to right, blue, red);
-
-    // `
+    const { userName } = useContext(UserContext)
 
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary static-top">
             <div className="container-fluid">
                 <div className="navbar-brand">
-                    {/* <img src={Logo} alt="" width="150px" /> */}
                     <h1 className="titulo-navbar">React Hook BBK Weather</h1>
                 </div>
-                {/* <div className="user-name text-right text-light" >
-                        <p>{userName}</p>
-                    </div> */}
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -76,8 +66,6 @@ const NavBar = () => {
                 </div>
             </div>
         </nav>
-
-
     );
 }
 

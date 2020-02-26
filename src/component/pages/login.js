@@ -1,10 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
-
-// import styled from '@emotion/styled';
-// import { css } from '@emotion/core'
-
 import { Alert } from 'reactstrap';
 import { UserContext } from "../UserContext";
 
@@ -19,10 +15,6 @@ const LogIn = () => {
     const [errors, setErrors] = useState({ name: null, pass: null });
     const [isButtonLoading, setIsButtonLoading] = useState(false);
     const { userName, setUserName } = useContext(UserContext);
-
-    // if (userName !== null) {
-    //     history.push(`/user-desktop:${userName}`);
-    // }
 
     const validateName = (values) => {
         console.log("validateName: values", values);

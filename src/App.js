@@ -7,10 +7,8 @@ import { useState, useMemo } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './App.css';
-import WeatherEngine from "./component/WeatherEngine";
 import NavBar from "./component/NavBar/navbar";
 import FooterBootStrap from "./component/footer";
-import { Button } from 'reactstrap';
 import { UserContext } from "./component/UserContext";
 
 //Pages to Route

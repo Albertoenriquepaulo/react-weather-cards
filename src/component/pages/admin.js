@@ -6,9 +6,6 @@ const Admin = () => {
     const [visible, setVisible] = useState(true);
 
     const onDismiss = () => setVisible(false);
-    // setTimeout(() => {
-    //     setVisible(false);
-    // }, 3000);
 
     return (
         <Alert color="danger" isOpen={visible} toggle={onDismiss} size="40px">

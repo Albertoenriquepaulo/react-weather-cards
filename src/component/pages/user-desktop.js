@@ -7,7 +7,6 @@ import { UserContext } from '../UserContext';
 
 const UserDesktop = (props) => {
     let history = useHistory();
-    // console.log("UserDesktop");
     const { setUserName } = useContext(UserContext);
 
     const userName = Hp.getUserName(props.match);
@@ -19,8 +18,7 @@ const UserDesktop = (props) => {
         let weatherInnerHTML = [];
 
         userObject.countries.map((item) => {
-            console.log(item);
-            weatherInnerHTML.push(<WeatherEngine initialLocation={item} />)
+            weatherInnerHTML.push(<WeatherEngine initialLocation={item} key={item} />)
         }
         )
         return weatherInnerHTML;
@@ -28,8 +26,6 @@ const UserDesktop = (props) => {
 
     const redirect = (e) => {
         e.preventDefault();
-        // setUserName(null);
-        // console.log("OnCLICK-LOGOUT->", userName);
         history.push(`/user-config:${userName}`);
     }
 

@@ -44,8 +44,7 @@ const UserConfig = (props) => {
 
     const myFunction = (e) => {
         e.preventDefault();
-        // setUserName(null);
-        // console.log("OnCLICK-LOGOUT->", userName);
+
         history.push(`/user-desktop:${userName}`);
     }
 
