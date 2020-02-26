@@ -8,13 +8,16 @@ import { useHistory } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 import { UserContext } from "../UserContext";
 
+import SpinnerBtn from "../spinnerBtn";
+
 const LogIn = () => {
     let history = useHistory();
     let arryFromLS = [];
-
+    const ms = 1800;
     const [userAndPassOK, setUserAndPassOK] = useState(false);
     const [checkUserDone, setCheckUserDone] = useState(false);
-    const [errors, setErrors] = useState({ name: null, pass: null })
+    const [errors, setErrors] = useState({ name: null, pass: null });
+    const [isButtonLoading, setIsButtonLoading] = useState(false);
     const { userName, setUserName } = useContext(UserContext);
 
     // if (userName !== null) {
@@ -65,7 +68,7 @@ const LogIn = () => {
             setUserName(nameAndPass.name);
             setTimeout(() => {
                 history.push(`/user-desktop:${nameAndPass.name}`);
-            }, 2000);
+            }, ms);
 
             setUserAndPassOK(true);
 
@@ -75,7 +78,7 @@ const LogIn = () => {
             setUserAndPassOK(false);
             setTimeout(() => {
                 setCheckUserDone(false);
-            }, 2000);
+            }, ms);
 
         }
     }
@@ -112,7 +115,17 @@ const LogIn = () => {
                             </div>
                         </div>
                     </div>
-                    <button type="button" className="btn btn-primary" onClick={checkUser}>Log In</button>
+                    {/* <button type="button" className="btn btn-primary" onClick={checkUser}>Log In</button> */}
+                    <SpinnerBtn className="btn btn-primary" onClick={() => {
+                        setIsButtonLoading(true);
+                        setTimeout(() => {
+                            setIsButtonLoading(false);
+                        }, ms);
+                        checkUser();
+                    }}
+                        isLoading={userAndPassOK && isButtonLoading}>
+                        Log In
+                    </SpinnerBtn>
                 </div>
                 {/* {
                     userAndPassOK ? (<Alert color="primary" toggle="true">Logeado con éxito...!</Alert>) :
