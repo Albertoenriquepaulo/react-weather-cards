@@ -39,11 +39,6 @@ const SignUp = () => {
         setErrors(errors);
     }
 
-    // setTimeout(() => {
-    //     setUserAlreadyExist(true);
-    // }, 3000);
-
-
     const checkIfNameExistInArray = (name, arry) => {
         return arry.find(element => {
             if (element.name === name) {
@@ -127,7 +122,7 @@ const SignUp = () => {
                             </div>
                         </div>
                     </div>
-                    <SpinnerBtn onClick={() => {
+                    <SpinnerBtn className="btn btn-primary" onClick={() => {
                         setIsButtonLoading(true);
                         setTimeout(() => {
                             setIsButtonLoading(false);

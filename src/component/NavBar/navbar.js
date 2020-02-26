@@ -12,6 +12,7 @@ import "./navBar.css";
 import { FaHome, FaUser, FaAdn } from "react-icons/fa";
 import { GoSignIn } from "react-icons/go";
 import { UserContext } from '../UserContext';
+import LogOut from "../logout";
 
 
 const NavBar = () => {
@@ -59,7 +60,7 @@ const NavBar = () => {
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/login" className="nav-link">
-                                        <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" /><p>User</p>
+                                        <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" /><p>Log in</p>
                                     </Link>
                                 </li>
                                 <li className="nav-item">
@@ -73,8 +74,9 @@ const NavBar = () => {
                             </div> */}
                         </div>
                         <div className="user-name row bg-primary text-white">
-                            {userName ? <FaUserCheck size="20px" /> : null}
-                            <p><strong>{userName}</strong></p>
+                            {userName ? <LogOut /> : null}
+                            {/* <p><strong>{userName}</strong></p>
+                            <a>Log out</a> */}
                         </div>
                     </div>
                 </div>

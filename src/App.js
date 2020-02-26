@@ -29,24 +29,6 @@ const App = () => {
   const [userName, setUserName] = useState(null);
   const value = useMemo(() => ({ userName, setUserName }), [userName, setUserName]);
 
-  const [numbersCardToPrint, setNumbersCardToPrint] = useState(0);
-
-  const doWhenOnkeyDownEqualEnter = (params) => {
-    if (params.keyCode === 13) {
-      setNumbersCardToPrint(params.target.value);
-    }
-  }
-
-  const createHTML = (value) => {
-    let weatherInnerHTML = [];
-    for (let index = 0; index < value; index++) {
-      weatherInnerHTML.push(<WeatherEngine initialLocation="Venezuela" />)
-    }
-    return weatherInnerHTML;
-  }
-
-  // function App() {
-
   return (
     <Router>
       <div className="App">

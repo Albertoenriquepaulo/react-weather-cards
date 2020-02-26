@@ -15,11 +15,11 @@ const LogIn = () => {
     const [userAndPassOK, setUserAndPassOK] = useState(false);
     const [checkUserDone, setCheckUserDone] = useState(false);
     const [errors, setErrors] = useState({ name: null, pass: null })
-    const { setUserName } = useContext(UserContext);
+    const { userName, setUserName } = useContext(UserContext);
 
-    // setTimeout(() => {
-    //     setUserAndPassOK(true);
-    // }, 3000);
+    // if (userName !== null) {
+    //     history.push(`/user-desktop:${userName}`);
+    // }
 
     const validateName = (values) => {
         console.log("validateName: values", values);
@@ -68,7 +68,7 @@ const LogIn = () => {
             }, 4000);
 
             setUserAndPassOK(true);
-            // TODO: Mostrar Logeado con exito
+
         } else {
             console.log("Usuario o password incorrectos");
 
@@ -76,25 +76,9 @@ const LogIn = () => {
             setTimeout(() => {
                 setCheckUserDone(false);
             }, 2000);
-            // TODO: Error Usuario o password incorrectos
-            //history.push('/login');
+
         }
     }
-
-    let myColor = "#ab67ee";
-    let radius = "20px";
-
-
-    // let myClass = css`
-    // width: 20px;
-    // background: red;
-    // color: red;
-    // &:hover {
-    //     font-weight: bold;
-    //     color: ${myColor};
-    //     border-radius: ${radius};
-    // }
-    // `;
 
     console.log("LogIn");
     return (

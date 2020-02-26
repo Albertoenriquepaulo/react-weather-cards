@@ -9,14 +9,16 @@ import Condition from "./condition";
 const WeatherCard = ({ temp, condition, city, country, changeQuery }) => {
     let highColor = 0, lowColor = 0;
     let bg = null;
-    if (temp > 12) { // Hot Weather
-        highColor = (1 - ((temp - 12) / 28)) * 255;
+    const minTemp = 12;  //12
+    const maxTemp = 32; //32
+    if (temp > minTemp) { // Hot Weather
+        highColor = (1 - ((temp - minTemp) / 28)) * 255;
         lowColor = highColor - 150;
         bg = `linear-gradient(to top,
             rgb(255, ${highColor}, 0), 
             rgb(255, ${lowColor}, 0))`;
-    } else if (temp <= 12) {// Cold Weather
-        highColor = (1 - ((temp + 20) / 32)) * 255;
+    } else if (temp <= minTemp) {// Cold Weather
+        highColor = (1 - ((temp + 20) / maxTemp)) * 255;
         lowColor = highColor - 150;
         bg = `linear-gradient(to top,
             rgb(0, ${highColor}, 255), 

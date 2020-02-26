@@ -1,5 +1,5 @@
 //http://localhost:3000/user-config:Manu
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -8,10 +8,13 @@ import { WiDayHail } from "react-icons/wi";
 
 import Hp from "../../component/helpers";
 import SpinnerBtn from "../spinnerBtn"
+import { UserContext } from '../UserContext';
 
 const UserConfig = (props) => {
     const [input, setInput] = useState("")
     const userName = Hp.getUserName(props.match);
+    const { setUserName } = useContext(UserContext);
+    setUserName(userName); //Seteando para el nombre del NavBar
 
     let userObject = Hp.fillUserFromLSData(userName);
     const [user, setUser] = useState(userObject);
@@ -19,8 +22,23 @@ const UserConfig = (props) => {
     const [forceRerender, setForceRerender] = useState(true);
     const [isButtonLoading, setIsButtonLoading] = useState(false);
 
-    console.log("From user-config-userObject", userObject);
-    console.log("From user-config-user", user);
+    const [errors, setErrors] = useState({ country: null, error: true });
+    const validateNameAndAddCountry = (e, country) => {
+        console.log("validateName: country", country);
+        let myErrors = { country: null, error: true };
+        if (country.trim() === "") {
+            myErrors.country = "Pais no puede estar vacio...";
+            myErrors.error = true;
+        } else {
+            myErrors.country = null;
+            myErrors.error = false;
+            Hp.addCountry(e, user, setUser, input, setInput);
+            console.log("Error seteado a FALSE");
+
+        }
+        console.log("ANTES DE SETEAR-> ", myErrors);
+        setErrors(myErrors);
+    }
 
     return (
         <div id="contenido">
@@ -34,9 +52,18 @@ const UserConfig = (props) => {
                 <div className="row">
                     <div className="col-6">
                         <label for="country">Escriba el Pais: </label>
-                        <form action="#" id="formulario" onSubmit={(e) => Hp.addCountry(e, user, setUser, input, setInput)}>
+                        <form action="#" id="formulario" onSubmit={(e) => {
+                            validateNameAndAddCountry(e, input);
+                        }}>
                             <label for="country"></label>
-                            <input onChange={(e) => setInput(e.target.value)} value={input} />
+                            <input
+                                onChange={(e) => setInput(e.target.value)}
+                                value={input}
+                                className={`form-control ${errors.country && "is-invalid"} `}
+                            />
+                            {errors.country && (<div className="invalid-feedback">
+                                {errors.country}
+                            </div>)}
                             {/* <button className="btn btn-primary w-100">Añadir</button> */}
                             <SpinnerBtn onClick={() => {
                                 setIsButtonLoading(true);

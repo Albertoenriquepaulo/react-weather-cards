@@ -39,7 +39,6 @@ export default {
         userAux.countries.push(input);
         setUser(userAux);
         setInput("");
-        // console.log(userAux.name, input);
         AddCountryToLS(userAux.name, input);
     },
 
@@ -53,7 +52,6 @@ export default {
         setForceRerender(!forceRerender);
     }
 }
-
 
 // *************** MANEJO DE LOCAL STORAGE *********************************************
 const AddCountryToLS = (user, country) => {
