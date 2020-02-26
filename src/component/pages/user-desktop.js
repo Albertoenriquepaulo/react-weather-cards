@@ -39,8 +39,8 @@ const UserDesktop = (props) => {
                 {ceateCards()}
             </div>
             <div className="text-swap-config-cards">
-                <a className="text-swap-config-cards btn btn-primary stretched-link" onClick={(e) => {
-                    redirect(e)
+                <a className="text-swap-config-cards btn btn-primary" onClick={(e) => {
+                    redirect(e);
                 }
                 }>Gestionar mis paises</a>
             </div>
