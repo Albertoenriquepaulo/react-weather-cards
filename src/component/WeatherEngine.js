@@ -5,8 +5,9 @@ import WeatherCard from "./WeatherCard/component";
 import '../App.css';
 
 const WeatherEngine = ({ initialLocation }) => {
+    //const initialLocation = "Venezuela"
     //init for our state variables
-    const [setQuery] = useState(initialLocation);
+    const [query, setQuery] = useState(initialLocation);
 
     //Añadiendo Loading State, ver HTML abajo también
     const [loading, setLoading] = useState(false);
@@ -21,19 +22,19 @@ const WeatherEngine = ({ initialLocation }) => {
         country: null
     });
 
+
     //definiendo la data fetching functions
     const dataFromAPI_GetWeather = async query => {
         setQuery("");  //Para limpiar el text box, tanto al inicar como cuando reset el error con el boton de reset
         setLoading(true);  //Adding Conditional Rendering
-        console.log("ALBERTO URL", `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=97a4393bc65f0efc512281aa489939d1`);
+
         //Handling Error with Try Catch
         try {
             const apiRes = await fetch(
                 `http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&APPID=97a4393bc65f0efc512281aa489939d1`
             );
             const resJSON = await apiRes.json();
-            console.log(":0", resJSON);
-
+            // console.log(":0", resJSON);
             setWeather({
                 temp: resJSON.main.temp,
                 city: resJSON.name,
