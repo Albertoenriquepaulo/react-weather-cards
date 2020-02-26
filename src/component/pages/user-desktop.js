@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Hp from "../../component/helpers";
 import WeatherEngine from "../WeatherEngine";
 import { UserContext } from '../UserContext';
 
 const UserDesktop = (props) => {
-    console.log("UserDesktop");
+    let history = useHistory();
+    // console.log("UserDesktop");
     const { setUserName } = useContext(UserContext);
 
     const userName = Hp.getUserName(props.match);
@@ -24,10 +26,25 @@ const UserDesktop = (props) => {
         return weatherInnerHTML;
     }
 
+    const myFunction = (e) => {
+        e.preventDefault();
+        // setUserName(null);
+        // console.log("OnCLICK-LOGOUT->", userName);
+        history.push(`/user-config:${userName}`);
+    }
+
     return (
-        <div className="WeatherEngine">
-            {ceateCards()}
-        </div>
+        <>
+            <div className="WeatherEngine">
+                {ceateCards()}
+            </div>
+            <div className="text-swap-config-cards">
+                <a className="text-swap-config-cards btn btn-primary stretched-link" onClick={(e) => {
+                    myFunction(e)
+                }
+                }>Gestionar mis paises</a>
+            </div>
+        </>
     );
 }
 

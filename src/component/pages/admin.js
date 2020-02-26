@@ -11,8 +11,8 @@ const Admin = () => {
     // }, 3000);
 
     return (
-        <Alert color="info" isOpen={visible} toggle={onDismiss}>
-            You are in the Admin page... In construction...!!!
+        <Alert color="danger" isOpen={visible} toggle={onDismiss} size="40px">
+            You are in the Admin page... Under construction...!!!
     </Alert>
     );
 }

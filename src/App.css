@@ -102,6 +102,11 @@ body {
   height: 30%;
 } */
 
-.navbar-nav {
+/* .navbar-nav {
   margin-bottom: -30px;
+} */
+
+.text-swap-config-cards {
+  display: flex;
+  justify-content: flex-end;
 }

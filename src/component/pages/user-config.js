@@ -1,5 +1,6 @@
 //http://localhost:3000/user-config:Manu
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -11,6 +12,7 @@ import SpinnerBtn from "../spinnerBtn"
 import { UserContext } from '../UserContext';
 
 const UserConfig = (props) => {
+    let history = useHistory();
     const [input, setInput] = useState("")
     const userName = Hp.getUserName(props.match);
     const { setUserName } = useContext(UserContext);
@@ -40,15 +42,22 @@ const UserConfig = (props) => {
         setErrors(myErrors);
     }
 
+    const myFunction = (e) => {
+        e.preventDefault();
+        // setUserName(null);
+        // console.log("OnCLICK-LOGOUT->", userName);
+        history.push(`/user-desktop:${userName}`);
+    }
+
     return (
         <div id="contenido">
             <div className="container">
                 <div className="row">
                     <h1>Mis Tarjetas de Clima</h1>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                     <p>Bienvenido: <strong>{user.name}</strong></p>
-                </div>
+                </div> */}
                 <div className="row">
                     <div className="col-6">
                         <label for="country">Escriba el Pais: </label>
@@ -103,6 +112,12 @@ const UserConfig = (props) => {
                             })}
                         </ListGroup>
                     </div>
+                </div>
+                <div className="row text-swap-config-cards">
+                    <p className="text-left btn btn-primary" onClick={(e) => {
+                        myFunction(e);
+                    }
+                    }>Ver mis tarjetas</p>
                 </div>
             </div>
         </div>

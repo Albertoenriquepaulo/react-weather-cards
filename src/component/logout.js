@@ -23,7 +23,6 @@ const LogOut = () => {
             <p><strong>{userName}</strong></p>
             <a onClick={(e) => {
                 myFunction(e)
-
             }
             }>Log out</a>
         </>

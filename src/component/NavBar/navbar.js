@@ -24,70 +24,59 @@ const NavBar = () => {
     // `
 
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-primary static-top">
-                <div className="container-fluid">
-                    <div className="navbar-brand">
-                        {/* <img src={Logo} alt="" width="150px" /> */}
-                        <h1>React Hook BBK Weather</h1>
-                    </div>
-                    {/* <div className="user-name text-right text-light" >
+
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary static-top">
+            <div className="container-fluid">
+                <div className="navbar-brand">
+                    {/* <img src={Logo} alt="" width="150px" /> */}
+                    <h1>React Hook BBK Weather</h1>
+                </div>
+                {/* <div className="user-name text-right text-light" >
                         <p>{userName}</p>
                     </div> */}
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div>
-                        <div className="collapse navbar-collapse row" id="navbarResponsive">
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <Link to="/" className="nav-link">
-                                        <FaHome size="32px" data-toggle="tooltip" data-placement="bottom" title="Home" /><p>Home</p>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/signup" className="nav-link">
-                                        <GoSignIn size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign Up" /><p>Sign up</p>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/login" className="nav-link">
-                                        <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" /><p>Log in</p>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <Link to="/admin" className="nav-link">
-                                        <FaAdn size="32px" data-toggle="tooltip" data-placement="bottom" title="Admin" /><p>Admin</p>
-                                    </Link>
-                                </li>
-                            </ul>
-                            {/* <div className="user-name text-right text-light" >
-                                <p>{userName}</p>
-                            </div> */}
-                        </div>
-                        <div className="user-name row bg-primary text-white">
-                            {userName ? <LogOut /> : null}
-                            {/* <p><strong>{userName}</strong></p>
-                            <a>Log out</a> */}
-                        </div>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div>
+                    <div className="collapse navbar-collapse row" id="navbarResponsive">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link">
+                                    <FaHome size="32px" data-toggle="tooltip" data-placement="bottom" title="Home" /><p>Home</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/signup" className="nav-link">
+                                    <GoSignIn size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign Up" /><p>Sign up</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-link">
+                                    <FaUser size="32px" data-toggle="tooltip" data-placement="bottom" title="Sign In" /><p>Log in</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/admin" className="nav-link">
+                                    <FaAdn size="32px" data-toggle="tooltip" data-placement="bottom" title="Admin" /><p>Admin</p>
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="user-name row bg-primary text-white">
+                        {userName ? <LogOut /> : null}
                     </div>
                 </div>
-                {/* <div className="user-name d-block" >
-                    <p>{userName}</p>
-                </div> */}
-            </nav>
-            {/* <div className="user-name d-inline bg-primary" >
-                <p className="bg-primary text-right text-light">{userName}</p>
-            </div> */}
-        </div>
+            </div>
+        </nav>
+
 
     );
 }
