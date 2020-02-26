@@ -76,6 +76,10 @@ body {
   background-color: #2080df;
 }
 
+.button-primary {
+  margin-left: 0px;
+}
+
 .button > div {
   display: flex;
   justify-content: center;

@@ -13,8 +13,7 @@ const LogOut = () => {
     const myFunction = (e) => {
         e.preventDefault();
         setUserName(null);
-        console.log("OnCLICK-LOGOUT->", userName);
-        history.push("/");
+        history.push("/home");
     }
 
     return (

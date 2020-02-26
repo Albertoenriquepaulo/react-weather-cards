@@ -26,7 +26,7 @@ const UserDesktop = (props) => {
         return weatherInnerHTML;
     }
 
-    const myFunction = (e) => {
+    const redirect = (e) => {
         e.preventDefault();
         // setUserName(null);
         // console.log("OnCLICK-LOGOUT->", userName);
@@ -40,7 +40,7 @@ const UserDesktop = (props) => {
             </div>
             <div className="text-swap-config-cards">
                 <a className="text-swap-config-cards btn btn-primary stretched-link" onClick={(e) => {
-                    myFunction(e)
+                    redirect(e)
                 }
                 }>Gestionar mis paises</a>
             </div>

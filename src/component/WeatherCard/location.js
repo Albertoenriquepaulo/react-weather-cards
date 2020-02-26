@@ -33,7 +33,7 @@ const Location = ({ city, country, changeQuery }) => {
         if (params.keyCode === 13) {
             params.preventDefault();
             changeQuery(params.target.value);
-            console.log("From onkeyDownAndBlur:", params.target.value);
+            // console.log("From onkeyDownAndBlur:", params.target.value);
         }
     }
 

@@ -42,7 +42,6 @@ const WeatherEngine = ({ initialLocation }) => {
                 country: resJSON.sys.country
             });
         } catch (error) {
-            console.log(":1");
             setError(true);
         }
         setLoading(false);
@@ -53,7 +52,6 @@ const WeatherEngine = ({ initialLocation }) => {
     //     params.preventDefault();
     //     dataFromAPI_GetWeather(query);
     // }
-
     const changeQuery = (query) => {
         setQuery(query);
         dataFromAPI_GetWeather(query);

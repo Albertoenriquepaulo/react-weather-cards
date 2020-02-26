@@ -65,7 +65,7 @@ const LogIn = () => {
             setUserName(nameAndPass.name);
             setTimeout(() => {
                 history.push(`/user-desktop:${nameAndPass.name}`);
-            }, 4000);
+            }, 2000);
 
             setUserAndPassOK(true);
 
@@ -118,7 +118,7 @@ const LogIn = () => {
                     userAndPassOK ? (<Alert color="primary" toggle="true">Logeado con éxito...!</Alert>) :
                         (<Alert color="danger" toggle="true">Usuario o Password incorrectos...!</Alert>)
                 } */}
-                <Alert color="primary" className={`text-info ${userAndPassOK ? "d-block" : "d-none"}`}>Logeado con exito. Dirigiendo a la página de su perfil de usuario...</Alert>
+                <Alert color="primary" className={`text-dark ${userAndPassOK ? "d-block" : "d-none"}`}>Logeado con exito. Dirigiendo a la página de su perfil de usuario...</Alert>
                 <Alert color="danger" className={!userAndPassOK && checkUserDone ? "d-block" : "d-none"}>Usuario o password incorrectos. Verifique la información suministrada...</Alert>
             </div>
         </div>
