@@ -1,0 +1,26 @@
+[33ma70f8b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33ma70f8b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{1}: checkout: moving from a70f8b66e28dcb2d2ccc0f26b3a88d1716bf3222 to master
+[33ma70f8b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{2}: checkout: moving from f7aab163dfd37a0076a05bcb503617d021a2e3d2 to a70f8b66e28dcb2d2ccc0f26b3a88d1716bf3222
+[33mf7aab16[m HEAD@{3}: commit: Cleaning the project. Project Finished
+[33mf9dcd36[m HEAD@{4}: commit: Spinner de LogIn implementado
+[33mb42b60d[m HEAD@{5}: commit: Antes de colocar el spinner del LogIn
+[33mae1e593[m HEAD@{6}: commit: Corregido error con boton streched
+[33mab175b8[m HEAD@{7}: commit: Funcionando, falta corregir detalles de responsive
+[33mbcdf96c[m HEAD@{8}: commit: Añdido botones de swap entre paginas
+[33m38161f9[m HEAD@{9}: commit: Añadido el LogOut, todo funcionando. Falta la página Admin
+[33m2dfc5a9[m HEAD@{10}: commit: Implementado el useContext to show el user de la NavBar
+[33m815f4ce[m HEAD@{11}: commit: All Good... Next añadir el user al NavBar
+[33m80a6548[m HEAD@{12}: commit: Before implementing Button Spinner
+[33m69fae03[m HEAD@{13}: commit: Funcional pero sin detalles del HTML
+[33mf03cfab[m HEAD@{14}: commit: Local Storage Working junto con Add Countries
+[33mf8795d5[m HEAD@{15}: commit: React-Icons Installed
+[33ma10e161[m HEAD@{16}: commit: Corregido adding countries
+[33mc7ca448[m HEAD@{17}: checkout: moving from master to c7ca448a660637c8bb5e8e1ef190e7c4f8083af1
+[33ma70f8b6[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m HEAD@{18}: commit: Gregoric Correction
+[33mc7ca448[m HEAD@{19}: commit: Delete Country is not working properly
+[33mf0e4868[m HEAD@{20}: commit: Creada una parte con una forma de hace el TodoList, will delete it y hacerlo de nuevo
+[33m533e59a[m HEAD@{21}: commit: Todo bien. Ahora a implementar el ToDoList
+[33m2dbfd7d[m[33m ([m[1;31morigin/master[m[33m)[m HEAD@{22}: commit: Listo las REACT Router. falta Agregar paginas de usuario y conf
+[33maaa8d40[m HEAD@{23}: commit: NavBar Added
+[33m0dedece[m HEAD@{24}: commit: First Commit - Solo los cards listos
+[33m43458b2[m HEAD@{25}: commit (initial): Initialize project using Create React App
