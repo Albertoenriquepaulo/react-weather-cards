@@ -114,3 +114,27 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
+.nav-link:hover {
+  transform: scale(1.25, 1.25);
+}
+
+/* RESPONSIVE */
+@media (max-width: 767.98px) {
+  .navbar {
+    width: 800px;
+  }
+
+  .WeatherEngine {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+  }
+
+  .titulo-navbar {
+    font-size: 1.5rem;
+  }
+}
+
+/* FIN RESPONSIVE */

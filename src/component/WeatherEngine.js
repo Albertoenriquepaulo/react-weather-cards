@@ -68,14 +68,10 @@ const WeatherEngine = ({ initialLocation }) => {
 
 
     return (
-        <div>
+        <div className="WeatherEngineOrigen">
             {(!loading && !error) ? (<div>
                 <WeatherCard temp={weather.temp} condition={weather.condition} city={weather.city} country={weather.country} changeQuery={changeQuery} />
-                {/* <form>
-                    <input value={query} onChange={(params) => setQuery(params.target.value)} />
-                    <button onClick={e => handleSearch(e)}>Search</button>
-                </form> */}
-            </div>) : loading ? (<div style={{ color: "black" }}>Loading</div>) : (!loading && error) ? (<div style={{ color: "black" }}>Hubo un error <button onClick={() => setError(false)}>Reset!</button></div>) : null}
+            </div>) : loading ? (<div style={{ color: "black" }}>Loading</div>) : (!loading && error) ? (<div style={{ color: "red" }}>Error: conexión o nombre. <button onClick={() => setError(false)}>Reset!</button></div>) : null}
         </div>
     );
 }

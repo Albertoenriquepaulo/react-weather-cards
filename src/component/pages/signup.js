@@ -8,14 +8,6 @@ import { UserContext } from "../UserContext";
 
 import SpinnerBtn from "../spinnerBtn"
 
-// function Button({ isLoading, children, ...props }) {
-//     return (
-//         <button className="button btn btn-primary" {...props}>
-//             {isLoading ? <Loader /> : children}
-//         </button>
-//     );
-// }
-
 const SignUp = () => {
 
     let history = useHistory();
@@ -132,13 +124,7 @@ const SignUp = () => {
                         isLoading={userAlreadyExist && isButtonLoading}>
                         Sign up
                     </SpinnerBtn>
-                    {/* <button type="button" className="btn btn-primary" onClick={saveToLS}>Sign Up</button> */}
-                    {/* {
-                        userAlreadyExist ? (<Alert color="primary" toggle="true">Usuario ya existe...!</Alert>) :
-                            (<Alert color="success" toggle="true">Usuario creado con éxito...!</Alert>)
-                    } */}
                     <Alert color="danger" className={userAlreadyExist ? "d-block" : "d-none"}>Usuario ya creado, intente con otro nombre de usuario...!</Alert>
-                    {/* <Alert color="primary" className={!userAlreadyExist ? "d-block" : "d-none"}>Usuario creado con éxito...!</Alert> */}
                 </div>
             </div>
         </div>

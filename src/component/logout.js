@@ -13,7 +13,7 @@ const LogOut = () => {
     const myFunction = (e) => {
         e.preventDefault();
         setUserName(null);
-        history.push("/home");
+        history.push("/");
     }
 
     return (

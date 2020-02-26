@@ -29,7 +29,7 @@ const NavBar = () => {
             <div className="container-fluid">
                 <div className="navbar-brand">
                     {/* <img src={Logo} alt="" width="150px" /> */}
-                    <h1>React Hook BBK Weather</h1>
+                    <h1 className="titulo-navbar">React Hook BBK Weather</h1>
                 </div>
                 {/* <div className="user-name text-right text-light" >
                         <p>{userName}</p>
